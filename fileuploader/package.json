@@ -1,0 +1,18 @@
+{
+  "name": "liwang",
+  "version": "0.0.2",
+  "description": "photo sticker",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Li Wang (https://ft-tf.com)",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.4.7",
+    "angular-ui-bootstrap": "^0.14.3",
+    "bootstrap": "^3.3.5",
+    "jquery": "^2.1.4",
+    "jquery-ui": "^1.10.5"
+  }
+}

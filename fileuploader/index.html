@@ -1,0 +1,58 @@
+<!doctype html>
+<html ng-app="LiApp">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<title>L-atrix</title>
+    <link rel="shortcut icon" href="favicon.ico"/>
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link rel="stylesheet" href="css/main.css">
+
+</head>
+<body ng-controller="mainController">
+<div class="c-context" >
+	<div id="i-view" class="c-view">
+        <form role="form">
+            <button type="reset" class="btn btn-primary" ng-show="imgPhoto" ng-click="clearAll()">Start Over</button>
+            <div class="form-group">
+                <label for="i-uploadPhoto">Upload photo</label>
+                <input id="i-uploadPhoto" class="text-center" type="file" onchange="angular.element(this).scope().loadPhotoFile()" />
+				<div class="text-danger" ng-show="imgError">{{imgError}}</div>
+            </div>
+        </form>
+		<div style="position: absolute; top: 140px; left: 40px;" ng-if="imgPhoto"><img id="drop-item" class="c-drop" style="width: 350px; height: auto;" ng-src="{{imgPhoto}}" alt="Image preview" /></div>
+	</div>
+	<div id="i-nav" class="c-nav" ng-controller="stickerController">
+		<button class="btn btn-primary" ng-click="toggleModal()" draggable="true" id="test">Upload new sticker</button>
+		<modal title="Upload a new sticker" visible="showModal">
+			<form role="form">
+				<div class="form-group">
+					<label for="i-stickerphoto">Sticker</label>
+					<input type="file" id="i-stickerphoto" onchange="angular.element(this).scope().loadStickerFile()"/>
+					<div class="text-danger" ng-show="fileError">{{fileError}}</div>
+				</div>
+				<div class="form-group">
+					<label for="i-stickertitle">Title</label>
+					<input type="text" class="form-control" id="i-stickertitle" placeholder="sticker title" ng-keyup="updateTitle()"/>
+					<div class="text-danger" ng-show="titleError">{{titleError}}</div>
+				</div>
+                <button type="submit" class="btn btn-default" ng-click="stickerSubmit()" ng-disabled="!tempUrl||!tempTitle">Submit</button>
+			</form>
+		</modal>
+        <div ng-repeat="item in imgSticker" id="{{item.id}}" draggable="true" class="c-drag" ng-mouseenter="showDelete()" ng-mouseleave="hideDelete()">
+			<!--<span class="glyphicon glyphicon-remove" style="float: right; margin-bottom: -14px" ng-show="isDeleteVisible" ng-click="removeItembyId(item.id)"></span>-->
+            <img style="width:150px; height: auto;" ng-src="{{item.imgSrc}}" alt="Sticker preview"/>
+            <label class="text-center">{{item.title}}</label>
+        </div>
+	</div>
+</div>
+	<!-- SPELLS -->
+<script src="node_modules/jquery/dist/jquery.min.js"></script><!-- load jquery -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script><!-- load bootstrap js -->
+<script src="node_modules/angular/angular.min.js"></script><!-- load angular -->
+<script src="js/main.js"></script><!-- load main entry -->
+<script src="js/sticker.js"></script><!-- load sticker entry -->
+<script src="js/lvl-uuid.js"></script><!-- load uuid service -->
+</body>
+</html>

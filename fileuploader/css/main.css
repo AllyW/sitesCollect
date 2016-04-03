@@ -1,0 +1,45 @@
+@font-face{
+	font-family: "Garamand", Helvetica, sans-serif;
+}
+html, body {
+  height: 100%;
+  width: 100%;
+}
+html{
+    overflow-y:visible;
+}
+body{
+  background-image: url("../img/background.png");
+  background-repeat: repeat;
+}
+
+ul{
+  display: inline-block;
+  list-style: none;
+}
+
+a, a:link, a:visited, a:hover, a:active{
+  text-decoration: none;
+  color: inherit;
+}
+
+div{
+    margin-bottom: 20px;
+}
+.c-context{
+  width: 100%;
+  margin: 0;
+}
+.c-view{
+    display: inline-block;
+    position: relative;
+    padding: 20px;
+}
+.c-nav{
+    display: inline-block;
+    position: relative;
+    width: 150px;
+    overflow-x: hidden;
+    float: right;
+}
+
